@@ -59,7 +59,7 @@ export type ContactRequest = {
   company: string;
   reply: string;
   message: string;
-  plan?: string;
+  plan?: string | undefined;
 };
 
 /** Builds a mailto: link that opens the visitor's e-mail app with the request filled in. */

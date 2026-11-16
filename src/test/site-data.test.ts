@@ -34,7 +34,7 @@ describe("Kontaktipäring", () => {
     });
     expect(link.startsWith(`mailto:${CONTACT.email}?`)).toBe(true);
     expect(CONTACT.email).toBe("jaive.giordano@gmail.com");
-    const body = decodeURIComponent(link.split("body=")[1]);
+    const body = decodeURIComponent(link.split("body=")[1] ?? "");
     expect(body).toContain("Nimi: Mari");
     expect(body).toContain("Soovin kodulehte");
   });
