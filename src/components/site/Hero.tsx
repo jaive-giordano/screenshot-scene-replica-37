@@ -69,7 +69,7 @@ export function Hero() {
             <ShieldCheck className="size-4 text-success" />
             Kiire ja riskivaba lahendus väikeettevõttele
           </span>
-          <h1 className="mt-6 text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-[3.4rem]">
+          <h1 className="mt-6 text-4xl font-bold leading-[1.1] sm:text-5xl lg:text-[3.1rem]">
             Kaasaegsed kodulehed väikeettevõtetele —{" "}
             <span className="text-primary">näe valmis kavandit enne ostuotsust.</span>
           </h1>
