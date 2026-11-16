@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Prices, contact details and revision-round counts live in `src/lib/site-data.ts` and are covered by `src/test/site-data.test.ts`; components read from there so one edit updates the whole site.
+- The landing page is one scrolling page (`src/routes/index.tsx`) composed of section components in `src/components/site/`; nav uses in-page anchors as the brief specifies.
+- The contact form opens the visitor's mail app via a prefilled `mailto:` link (no backend yet).
