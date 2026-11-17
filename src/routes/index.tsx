@@ -7,7 +7,6 @@ import { HowItWorks } from "@/components/site/HowItWorks";
 import { Pricing } from "@/components/site/Pricing";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { LanguageProvider } from "@/lib/i18n";
 import type { PlanId } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -40,7 +39,6 @@ function Index() {
   }
 
   return (
-    <LanguageProvider>
       <div className="min-h-screen bg-background">
         <SiteHeader />
         <main>
@@ -52,6 +50,5 @@ function Index() {
         </main>
         <SiteFooter />
       </div>
-    </LanguageProvider>
   );
 }
