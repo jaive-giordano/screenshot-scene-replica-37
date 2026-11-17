@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { PORTFOLIO, type PortfolioId } from "@/lib/site-data";
 import cafe from "@/assets/portfolio-cafe.jpg";
@@ -23,8 +23,11 @@ export function Portfolio() {
           {PORTFOLIO.map((work, i) => {
             const text = t.portfolio.items[work.id];
             return (
-              <article
+              <a
                 key={work.id}
+                href={work.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="card-tactile flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft"
               >
                 <div className="relative m-3 mb-0 aspect-[16/11] overflow-hidden rounded-2xl bg-muted">
@@ -47,13 +50,11 @@ export function Portfolio() {
                   <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-muted-foreground">
                     {text.description}
                   </p>
-                  <Button asChild variant="heroOutline" className="mt-6 h-11 w-full rounded-full">
-                    <a href={work.url} target="_blank" rel="noopener noreferrer">
-                      {t.portfolio.view} <ArrowUpRight />
-                    </a>
-                  </Button>
+                  <span className={buttonVariants({ variant: "heroOutline", className: "mt-6 h-11 w-full rounded-full" })}>
+                    {t.portfolio.view} <ArrowUpRight />
+                  </span>
                 </div>
-              </article>
+              </a>
             );
           })}
         </div>

@@ -48,6 +48,7 @@ export function Contact({
           <div className="mt-10 rounded-3xl border border-border bg-card p-7">
             <div className="font-display text-2xl font-semibold">{CONTACT.name}</div>
             <div className="text-sm text-muted-foreground">{c.role}</div>
+            <p className="mt-4 border-l-2 border-amber pl-4 leading-relaxed text-foreground/85">{c.intro}</p>
             <ul className="mt-6 space-y-4">
               <li>
                 <a href={`mailto:${CONTACT.email}`} className="group flex items-center gap-4">

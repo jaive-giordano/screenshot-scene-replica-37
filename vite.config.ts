@@ -20,6 +20,7 @@ export default defineConfig({
     // (a mid-session re-optimize leaves the open tab with two React copies -> blank page).
     optimizeDeps: {
       include: [
+        "@radix-ui/react-accordion",
         "@radix-ui/react-dialog",
         "@radix-ui/react-label",
         "@radix-ui/react-slot",
