@@ -36,9 +36,9 @@ describe("Hinnakiri", () => {
     expect(DICTIONARIES.et.pricing.extra(EXTRA_SCOPE.perPageFrom)).toContain("alates 40 € / leht");
   });
 
-  it("lähtekoodi pakett selgitab mahdu: kuni 5 sektsiooni või 3 alamlehte ja üks keel", () => {
+  it("lähtekoodi pakett selgitab mahdu: kuni 6 sisusektsiooni ja üks keel", () => {
     const feats = DICTIONARIES.et.pricing.plans.lahtekood.features;
-    expect(feats[0]).toBe("Kuni 5 sektsiooniga üheleheline koduleht (või kuni 3 alamlehte)");
+    expect(feats[0]).toBe("Kuni 6 sisusektsiooniga üheleheline koduleht (sama mahuga nagu see leht)");
     expect(feats).toContain("Üks keel (lisakeeled kokkuleppel)");
   });
 
@@ -49,8 +49,8 @@ describe("Hinnakiri", () => {
   it("KKK esimene küsimus on kodulehe mahu kohta", () => {
     const first = DICTIONARIES.et.faq.items[0];
     expect(first?.q).toBe("Kui suur koduleht hinna sisse kuulub?");
-    expect(first?.a).toContain("kuni 5 sisusektsiooni");
-    expect(first?.a).toContain("kuni 3 eraldi alamlehte ühes keeles");
+    expect(first?.a).toContain("kuni 6 sisusektsiooni");
+    expect(first?.a).toContain("ühes keeles");
     expect(DICTIONARIES.en.faq.items[0]?.q).toBe("How big a website is included in the price?");
     expect(DICTIONARIES.ru.faq.items[0]?.q).toBe("Какой объём сайта входит в стоимость?");
     expect(DICTIONARIES.it.faq.items[0]?.q).toBe("Quanto è grande il sito incluso nel prezzo?");
