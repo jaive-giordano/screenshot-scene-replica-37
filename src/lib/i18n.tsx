@@ -32,6 +32,7 @@ export type Dict = {
     eyebrow: string;
     title: string;
     text: string;
+    intro: string;
     role: string;
     emailLabel: string;
     phoneLabel: string;
@@ -46,6 +47,7 @@ export type Dict = {
     mail: MailLabels;
   };
   footer: { role: string };
+  faq: { eyebrow: string; title: string; items: { q: string; a: string }[] };
 };
 
 const et: Dict = {
@@ -155,6 +157,7 @@ const et: Dict = {
     eyebrow: "Võta ühendust",
     title: "Teeme Sinu ettevõttele uue kodulehe",
     text: "Võta julgelt ühendust, kui soovid tasuta esmast kavandit või küsida nõu. Teenuse eest saab tasuda ametliku arve alusel.",
+    intro: "Tere! Olen Jaive. Aitan Eesti väikeettevõtetel saada kaasaegse ja kiire kodulehe ilma keerulise bürokraatia ja ettemaksuta.",
     role: "Veebidisain",
     emailLabel: "E-post",
     phoneLabel: "Telefon",
@@ -179,6 +182,16 @@ const et: Dict = {
     mail: { subject: "Kodulehe päring", name: "Nimi", company: "Ettevõte", contact: "Kontakt", plan: "Pakett" },
   },
   footer: { role: "Veebidisain" },
+  faq: {
+    eyebrow: "KKK",
+    title: "Korduma kippuvad küsimused",
+    items: [
+      { q: "Mis saab siis, kui esmane kavand mulle ei meeldi?", a: "Sellisel juhul ei ole Sul mingeid kohustusi ega arveid. Maksad ainult siis, kui kavand meeldib ja otsustad sellega edasi minna." },
+      { q: "Mida mul on vaja kavandi tellimiseks saata?", a: "Piisab Sinu ettevõtte nimest, lühikesest teenuste kirjeldusest ja olemasolevatest piltidest või sotsiaalmeedia lingist. Ülejäänud struktuuri ja tekstid panen ise paika." },
+      { q: "Kui kiiresti koduleht täielikult valmis saab?", a: "Esmase kavandi saad juba järgmisel tööpäeval. Pärast muudatuste kinnitamist on koduleht avalik 1–2 tööpäeva jooksul." },
+      { q: "Kas koduleht töötab hästi ka telefonis?", a: "Jah, kõik lehed on ehitatud nii, et need näevad suurepärased välja nii nutitelefonis, tahvlis kui ka arvutiekraanil." },
+    ],
+  },
 };
 
 const en: Dict = {
@@ -288,6 +301,7 @@ const en: Dict = {
     eyebrow: "Get in touch",
     title: "Let's build a new website for your business",
     text: "Feel free to reach out if you'd like a free first draft or just some advice. Payment is made against an official invoice.",
+    intro: "Hi! I'm Jaive. I help small Estonian businesses get a modern, fast website without complicated paperwork or upfront payment.",
     role: "Web design",
     emailLabel: "Email",
     phoneLabel: "Phone",
@@ -312,6 +326,16 @@ const en: Dict = {
     mail: { subject: "Website enquiry", name: "Name", company: "Company", contact: "Contact", plan: "Package" },
   },
   footer: { role: "Web design" },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Frequently asked questions",
+    items: [
+      { q: "What if I don't like the first draft?", a: "Then you have no obligations and no invoices. You only pay if you like the draft and decide to go ahead." },
+      { q: "What do I need to send to order a draft?", a: "Your business name, a short description of your services and any existing photos or a social media link are enough. I'll take care of the structure and texts." },
+      { q: "How quickly will the website be fully ready?", a: "You'll get the first draft by the next business day. Once the changes are approved, the site goes live within 1–2 business days." },
+      { q: "Does the website work well on phones too?", a: "Yes, every site is built to look great on smartphones, tablets and desktop screens alike." },
+    ],
+  },
 };
 
 const ru: Dict = {
@@ -421,6 +445,7 @@ const ru: Dict = {
     eyebrow: "Связаться",
     title: "Создадим новый сайт для вашей компании",
     text: "Смело пишите, если хотите бесплатный первый макет или просто совет. Оплата производится по официальному счёту.",
+    intro: "Привет! Я Жаиве. Помогаю малому бизнесу в Эстонии получить современный и быстрый сайт — без лишней бюрократии и предоплаты.",
     role: "Веб-дизайн",
     emailLabel: "Эл. почта",
     phoneLabel: "Телефон",
@@ -445,6 +470,16 @@ const ru: Dict = {
     mail: { subject: "Запрос на сайт", name: "Имя", company: "Компания", contact: "Контакт", plan: "Пакет" },
   },
   footer: { role: "Веб-дизайн" },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Часто задаваемые вопросы",
+    items: [
+      { q: "Что, если первый макет мне не понравится?", a: "В таком случае у вас нет никаких обязательств и счетов. Вы платите, только если макет понравился и вы решили продолжить." },
+      { q: "Что нужно прислать, чтобы заказать макет?", a: "Достаточно названия компании, краткого описания услуг и имеющихся фото или ссылки на соцсети. Структуру и тексты я подготовлю сам." },
+      { q: "Как быстро сайт будет полностью готов?", a: "Первый макет вы получите уже на следующий рабочий день. После утверждения правок сайт будет опубликован в течение 1–2 рабочих дней." },
+      { q: "Хорошо ли сайт работает на телефоне?", a: "Да, все сайты создаются так, чтобы отлично выглядеть на смартфоне, планшете и компьютере." },
+    ],
+  },
 };
 
 const it: Dict = {
@@ -554,6 +589,7 @@ const it: Dict = {
     eyebrow: "Contattami",
     title: "Creiamo il nuovo sito della tua attività",
     text: "Scrivimi senza impegno se vuoi una prima bozza gratuita o un consiglio. Il pagamento avviene con fattura ufficiale.",
+    intro: "Ciao! Sono Jaive. Aiuto le piccole imprese estoni ad avere un sito moderno e veloce, senza burocrazia complicata e senza anticipi.",
     role: "Web design",
     emailLabel: "Email",
     phoneLabel: "Telefono",
@@ -578,6 +614,16 @@ const it: Dict = {
     mail: { subject: "Richiesta sito web", name: "Nome", company: "Azienda", contact: "Contatto", plan: "Pacchetto" },
   },
   footer: { role: "Web design" },
+  faq: {
+    eyebrow: "FAQ",
+    title: "Domande frequenti",
+    items: [
+      { q: "E se la prima bozza non mi piace?", a: "In quel caso non hai alcun obbligo né fatture. Paghi solo se la bozza ti piace e decidi di proseguire." },
+      { q: "Cosa devo inviare per ordinare una bozza?", a: "Bastano il nome della tua attività, una breve descrizione dei servizi e le foto che hai già o un link ai social. Al resto, struttura e testi, penso io." },
+      { q: "In quanto tempo il sito sarà completamente pronto?", a: "Ricevi la prima bozza già il giorno lavorativo successivo. Dopo l'approvazione delle modifiche, il sito è online entro 1–2 giorni lavorativi." },
+      { q: "Il sito funziona bene anche su smartphone?", a: "Sì, ogni sito è progettato per apparire al meglio su smartphone, tablet e computer." },
+    ],
+  },
 };
 
 export const DICTIONARIES: Record<Lang, Dict> = { et, en, ru, it };

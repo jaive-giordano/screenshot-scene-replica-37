@@ -8,6 +8,8 @@ import { Pricing } from "@/components/site/Pricing";
 import { Contact } from "@/components/site/Contact";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import type { PlanId } from "@/lib/site-data";
+import { Faq } from "@/components/site/Faq";
+import { useReveal } from "@/hooks/use-reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -32,6 +34,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [selectedPlan, setSelectedPlan] = useState<PlanId | null>(null);
+  useReveal();
 
   function selectPlan(id: PlanId) {
     setSelectedPlan(id);
@@ -43,10 +46,13 @@ function Index() {
         <SiteHeader />
         <main>
           <Hero />
-          <Portfolio />
-          <HowItWorks />
-          <Pricing onSelect={selectPlan} />
-          <Contact selectedPlan={selectedPlan} onClearPlan={() => setSelectedPlan(null)} />
+          <div data-reveal><Portfolio /></div>
+          <div data-reveal><HowItWorks /></div>
+          <div data-reveal><Pricing onSelect={selectPlan} /></div>
+          <div data-reveal><Faq /></div>
+          <div data-reveal>
+            <Contact selectedPlan={selectedPlan} onClearPlan={() => setSelectedPlan(null)} />
+          </div>
         </main>
         <SiteFooter />
       </div>
