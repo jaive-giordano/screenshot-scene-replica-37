@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Mail, Phone, Send, X } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { LogoMark } from "@/components/site/Logo";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
