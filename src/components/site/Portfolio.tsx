@@ -2,11 +2,15 @@ import { ArrowUpRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { PORTFOLIO, type PortfolioId } from "@/lib/site-data";
-import cafe from "@/assets/portfolio-cafe-real.jpg.asset.json";
-import haljastus from "@/assets/portfolio-haljastus-real.jpg.asset.json";
-import reveko from "@/assets/portfolio-reveko-real.jpg.asset.json";
+import rukkilillShot from "@/assets/portfolio-rukkilill.jpg.asset.json";
+import haljastusShot from "@/assets/portfolio-haljastusest.jpg.asset.json";
+import revekoShot from "@/assets/portfolio-reveko-invest.jpg.asset.json";
 
-const IMAGES: Record<PortfolioId, string> = { rukkilill: cafe.url, haljastusest: haljastus.url, reveko: reveko.url };
+const IMAGES: Record<PortfolioId, string> = {
+  rukkilill: rukkilillShot.url,
+  haljastusest: haljastusShot.url,
+  reveko: revekoShot.url,
+};
 const BADGE_TONES = ["bg-amber-soft", "bg-success-soft", "bg-primary-soft"];
 
 export function Portfolio() {
@@ -30,13 +34,13 @@ export function Portfolio() {
                 rel="noopener noreferrer"
                 className="card-tactile flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft"
               >
-                <div className="relative m-3 mb-0 aspect-[16/11] overflow-hidden rounded-2xl bg-muted">
+                <div className="relative m-3 mb-0 aspect-[1920/911] overflow-hidden rounded-2xl bg-muted">
                   <img
                     src={IMAGES[work.id]}
                     alt={text.title}
                     loading="lazy"
-                    width={1280}
-                    height={896}
+                    width={1920}
+                    height={911}
                     className="card-zoom h-full w-full object-cover object-top"
                   />
                   <span
