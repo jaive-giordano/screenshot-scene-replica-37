@@ -1,13 +1,16 @@
 import { useState, type FormEvent } from "react";
-import { Mail, Phone, Send, X } from "lucide-react";
-import { toast } from "sonner";
+import { Loader2, Mail, Phone, Send, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LogoMark } from "@/components/site/Logo";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useI18n } from "@/lib/i18n";
-import { buildContactMailto, CONTACT, type PlanId } from "@/lib/site-data";
+import { CONTACT, type PlanId } from "@/lib/site-data";
+
+const WEB3FORMS_ACCESS_KEY = "75ca4eb0-cd86-477e-8366-8f7bc9909481";
+
+type SendStatus = "idle" | "sending" | "success" | "error";
 
 export function Contact({
   selectedPlan,
