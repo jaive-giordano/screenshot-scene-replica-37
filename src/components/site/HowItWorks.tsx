@@ -1,12 +1,12 @@
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const TONES = ["bg-primary text-primary-foreground", "bg-success text-primary-foreground", "bg-amber text-foreground"];
+const TONES = ["bg-primary text-primary-foreground", "border border-foreground text-foreground", "border border-foreground text-foreground"];
 
 export function HowItWorks() {
   const { t } = useI18n();
   return (
-    <section id="kuidas-tootab" className="relative bg-surface py-24">
+    <section id="kuidas-tootab" className="relative bg-surface py-28">
       <div className="mx-auto max-w-6xl px-5">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{t.how.eyebrow}</p>
@@ -17,11 +17,11 @@ export function HowItWorks() {
           {t.how.steps.map((step, i) => (
             <li
               key={i}
-              className="card-tactile relative rounded-3xl border border-border bg-background p-8 shadow-soft"
+              className="card-tactile relative rounded-[2px] border border-border bg-background p-8"
             >
               <span
                 className={cn(
-                  "grid size-14 place-items-center rounded-2xl font-display text-2xl font-semibold shadow-soft",
+                  "grid size-14 place-items-center rounded-[2px] font-display text-2xl font-semibold",
                   TONES[i],
                 )}
               >

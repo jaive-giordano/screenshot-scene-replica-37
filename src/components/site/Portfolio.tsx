@@ -16,7 +16,7 @@ const BADGE_TONES = ["bg-amber-soft", "bg-success-soft", "bg-primary-soft"];
 export function Portfolio() {
   const { t } = useI18n();
   return (
-    <section id="tehtud-tood" className="py-24">
+    <section id="tehtud-tood" className="py-28">
       <div className="mx-auto max-w-6xl px-5">
         <div className="max-w-2xl">
           <p className="eyebrow">{t.portfolio.eyebrow}</p>
@@ -32,9 +32,9 @@ export function Portfolio() {
                 href={work.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-tactile flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft"
+                className="card-tactile flex flex-col overflow-hidden rounded-[2px] border border-border bg-card"
               >
-                <div className="relative m-3 mb-0 aspect-[1920/911] overflow-hidden rounded-2xl bg-muted">
+                <div className="relative m-3 mb-0 aspect-[1920/911] overflow-hidden rounded-[2px] bg-muted">
                   <img
                     src={IMAGES[work.id]}
                     alt={text.title}
@@ -44,7 +44,7 @@ export function Portfolio() {
                     className="card-zoom h-full w-full object-cover object-top"
                   />
                   <span
-                    className={`absolute left-3 top-3 rounded-full ${BADGE_TONES[i % 3]} px-3 py-1 text-xs font-bold text-foreground shadow-soft`}
+                    className={`absolute left-3 top-3 rounded-[2px] bg-background px-3 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-foreground`}
                   >
                     {text.badge}
                   </span>
@@ -54,7 +54,7 @@ export function Portfolio() {
                   <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-muted-foreground">
                     {text.description}
                   </p>
-                  <span className={buttonVariants({ variant: "heroOutline", className: "mt-6 h-11 w-full rounded-full" })}>
+                  <span className={buttonVariants({ variant: "heroOutline", className: "mt-6 h-11 w-full rounded-[2px]" })}>
                     {t.portfolio.view} <ArrowUpRight />
                   </span>
                 </div>

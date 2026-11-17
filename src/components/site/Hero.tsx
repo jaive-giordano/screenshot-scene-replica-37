@@ -31,14 +31,14 @@ function MiniPreview({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        "absolute block overflow-hidden rounded-2xl border border-border bg-card shadow-lift transition-all duration-500 ease-out hover:z-30 hover:-translate-y-3 hover:rotate-0 hover:scale-[1.04] hover:shadow-glow",
+        "absolute block overflow-hidden rounded-[2px] border border-border bg-card transition-all duration-500 ease-out hover:z-30 hover:-translate-y-1 hover:rotate-0 ",
         className,
       )}
     >
       <div className="flex items-center gap-1.5 border-b border-border bg-surface px-3 py-2">
-        <span className="size-2 rounded-full bg-primary/70" />
-        <span className="size-2 rounded-full bg-amber" />
-        <span className="size-2 rounded-full bg-success" />
+        <span className="size-2 rounded-[2px] bg-primary/70" />
+        <span className="size-2 rounded-[2px] bg-amber" />
+        <span className="size-2 rounded-[2px] bg-success" />
         <span className="ml-2 truncate rounded-md bg-background px-2 py-0.5 text-[10px] text-muted-foreground">
           {label}
         </span>
@@ -57,7 +57,7 @@ function MiniPreview({
 function Collage({ chipTitle, chipSub }: { chipTitle: string; chipSub: string }) {
   return (
     <div className="relative mx-auto aspect-[5/4] w-full max-w-[560px]">
-      <div className="absolute inset-[8%] -z-10 rounded-full bg-peach/60 blur-3xl" />
+      <div className="absolute inset-[8%] -z-10 rounded-[2px] bg-peach/60 blur-3xl" />
       <MiniPreview
         id="haljastusest"
         label="haljastusest.ee"
@@ -73,8 +73,8 @@ function Collage({ chipTitle, chipSub }: { chipTitle: string; chipSub: string })
         label="rukkilill.ee"
         className="bottom-0 left-[18%] z-20 w-[66%] rotate-[-1.5deg]"
       />
-      <div className="animate-float absolute -left-3 bottom-[14%] z-40 flex items-center gap-3 rounded-2xl border border-border bg-background px-4 py-3 shadow-soft">
-        <span className="grid size-9 place-items-center rounded-full bg-success-soft text-success">
+      <div className="animate-float absolute -left-3 bottom-[14%] z-40 flex items-center gap-3 rounded-[2px] border border-border bg-background px-4 py-3">
+        <span className="grid size-9 place-items-center rounded-[2px] bg-success-soft text-success">
           <Check className="size-4" strokeWidth={3} />
         </span>
         <div className="text-sm">
@@ -92,7 +92,7 @@ export function Hero() {
     <section id="top" className="relative overflow-hidden bg-hero">
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 pb-20 pt-14 md:pt-20 lg:grid-cols-[1.05fr_1fr] lg:pb-28">
         <div className="animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full border border-amber/50 bg-amber-soft px-4 py-1.5 text-sm font-semibold text-foreground">
+          <span className="inline-flex items-center gap-2 rounded-[2px] border border-border px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-foreground">
             <Clock className="size-4 text-primary" />
             {t.hero.badge}
           </span>
@@ -101,12 +101,12 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">{t.hero.sub}</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Button asChild variant="hero" size="xl" className="rounded-full">
+            <Button asChild variant="hero" size="xl" className="rounded-[2px]">
               <a href="#tehtud-tood">
                 {t.hero.ctaWork} <ArrowRight />
               </a>
             </Button>
-            <Button asChild variant="heroOutline" size="xl" className="rounded-full">
+            <Button asChild variant="heroOutline" size="xl" className="rounded-[2px]">
               <a href="#hinnakiri">{t.hero.ctaPricing}</a>
             </Button>
           </div>
