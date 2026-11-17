@@ -62,4 +62,16 @@ describe("Portfoolio", () => {
       "Reveko Invest OÜ",
     ]);
   });
+
+  it("lingid avavad need kolm aadressi, mitte lehe siseseid ankruid", () => {
+    expect(PORTFOLIO.map((p) => [p.id, p.url] as const)).toEqual([
+      ["rukkilill", "https://bright-tide-creative.lovable.app"],
+      ["haljastusest", "https://parnumaa-kodu-korras.lovable.app"],
+      ["reveko", "https://reveko-south-estonia-builders.lovable.app"],
+    ]);
+    for (const p of PORTFOLIO) {
+      expect(p.url.startsWith("#")).toBe(false);
+      expect(p.url.startsWith("http")).toBe(true);
+    }
+  });
 });
