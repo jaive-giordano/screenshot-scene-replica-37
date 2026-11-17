@@ -23,25 +23,36 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
                 key={plan.id}
                 className={cn(
                   "card-tactile relative flex flex-col rounded-[2px] border p-8",
-                  plan.featured ? "border-primary bg-background" : "border-border bg-card",
+                  plan.featured
+                    ? "border-ink-border bg-ink-card text-ink-foreground"
+                    : "border-border bg-card",
                 )}
               >
                 {plan.featured && (
-                  <span className="absolute -top-3.5 left-8 inline-flex items-center gap-1.5 rounded-[2px] bg-primary px-3.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-primary-foreground">
+                  <span className="absolute -top-3.5 left-8 inline-flex items-center gap-1.5 rounded-[2px] bg-gold px-3.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-ink">
                     <Sparkles className="size-3.5" />
                     {t.pricing.popular}
                   </span>
                 )}
                 <h3 className="text-2xl">{text.name}</h3>
-                <p className="mt-2 text-muted-foreground">{text.description}</p>
+                <p className={cn("mt-2", plan.featured ? "text-ink-muted" : "text-muted-foreground")}>
+                  {text.description}
+                </p>
                 <div className="mt-6 flex items-baseline gap-2">
                   <span className="font-display text-6xl font-semibold">{plan.price} €</span>
-                  <span className="text-sm text-muted-foreground">{t.pricing.oneTime}</span>
+                  <span className={cn("text-sm", plan.featured ? "text-ink-muted" : "text-muted-foreground")}>
+                    {t.pricing.oneTime}
+                  </span>
                 </div>
                 <ul className="mt-8 flex-1 space-y-3.5">
                   {text.features.map((f) => (
                     <li key={f} className="flex gap-3 text-[0.95rem]">
-                      <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-[2px] bg-success-soft text-success">
+                      <span
+                        className={cn(
+                          "mt-0.5 grid size-5 shrink-0 place-items-center rounded-[2px]",
+                          plan.featured ? "bg-ink-foreground/10 text-gold" : "bg-success-soft text-success",
+                        )}
+                      >
                         <Check className="size-3.5" strokeWidth={3} />
                       </span>
                       {f}
@@ -49,7 +60,7 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
                   ))}
                 </ul>
                 <Button
-                  variant={plan.featured ? "hero" : "heroOutline"}
+                  variant={plan.featured ? "heroOutline" : "hero"}
                   size="xl"
                   className="mt-9 w-full rounded-[2px]"
                   onClick={() => onSelect(plan.id)}

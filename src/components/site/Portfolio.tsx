@@ -15,7 +15,7 @@ const IMAGES: Record<PortfolioId, string> = {
 export function Portfolio() {
   const { t } = useI18n();
   return (
-    <section id="tehtud-tood" className="py-28">
+    <section id="tehtud-tood" className="bg-surface-deep py-28">
       <div className="mx-auto max-w-6xl px-5">
         <div className="max-w-2xl">
           <p className="eyebrow">{t.portfolio.eyebrow}</p>

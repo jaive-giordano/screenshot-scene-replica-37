@@ -5,7 +5,7 @@ import { CONTACT } from "@/lib/site-data";
 export function SiteFooter() {
   const { t } = useI18n();
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-border bg-surface-deep">
       <div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 py-10 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
           <LogoMark className="h-16" />

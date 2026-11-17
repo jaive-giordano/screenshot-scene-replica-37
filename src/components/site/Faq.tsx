@@ -4,7 +4,7 @@ import { useI18n } from "@/lib/i18n";
 export function Faq() {
   const { t } = useI18n();
   return (
-    <section id="kkk" className="py-28">
+    <section id="kkk" className="bg-surface-deep py-28">
       <div className="mx-auto max-w-3xl px-5">
         <div className="text-center">
           <p className="eyebrow">{t.faq.eyebrow}</p>
