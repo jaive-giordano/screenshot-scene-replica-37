@@ -2,11 +2,11 @@ import { ArrowUpRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { PORTFOLIO, type PortfolioId } from "@/lib/site-data";
-import cafe from "@/assets/portfolio-cafe.jpg";
-import haljastus from "@/assets/portfolio-haljastus.jpg";
-import reveko from "@/assets/portfolio-reveko.jpg";
+import cafe from "@/assets/portfolio-cafe-real.jpg.asset.json";
+import haljastus from "@/assets/portfolio-haljastus-real.jpg.asset.json";
+import reveko from "@/assets/portfolio-reveko-real.jpg.asset.json";
 
-const IMAGES: Record<PortfolioId, string> = { rukkilill: cafe, haljastusest: haljastus, reveko };
+const IMAGES: Record<PortfolioId, string> = { rukkilill: cafe.url, haljastusest: haljastus.url, reveko: reveko.url };
 const BADGE_TONES = ["bg-amber-soft", "bg-success-soft", "bg-primary-soft"];
 
 export function Portfolio() {
