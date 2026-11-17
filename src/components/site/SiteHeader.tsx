@@ -1,68 +1,73 @@
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { LogoMark } from "@/components/site/Logo";
+import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
+import { useI18n } from "@/lib/i18n";
+import { CONTACT } from "@/lib/site-data";
 
-const NAV = [
-  { href: "#tehtud-tood", label: "Tehtud tööd" },
-  { href: "#hinnakiri", label: "Hinnakiri" },
-  { href: "#kuidas-tootab", label: "Kuidas töötab" },
-  { href: "#kontakt", label: "Kontakt" },
-];
-
-function Brand() {
+function Brand({ role }: { role: string }) {
   return (
     <a href="#top" className="flex items-center gap-3">
-      <span className="grid size-9 place-items-center rounded-xl bg-primary font-display text-sm font-bold text-primary-foreground">
-        JG
-      </span>
+      <LogoMark />
       <span className="leading-tight">
-        <span className="block font-display text-base font-semibold">Jaive Giordano</span>
-        <span className="block text-xs font-medium text-muted-foreground">Veebidisain</span>
+        <span className="block font-display text-lg font-semibold">{CONTACT.name}</span>
+        <span className="block text-xs font-medium text-muted-foreground">{role}</span>
       </span>
     </a>
   );
 }
 
 export function SiteHeader() {
+  const { t } = useI18n();
+  const nav = [
+    { href: "#tehtud-tood", label: t.nav.work },
+    { href: "#hinnakiri", label: t.nav.pricing },
+    { href: "#kuidas-tootab", label: t.nav.how },
+    { href: "#kontakt", label: t.nav.contact },
+  ];
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Brand />
-        <nav className="hidden items-center gap-8 md:flex">
-          {NAV.map((item) => (
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md">
+      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-4 px-5">
+        <Brand role={t.footer.role} />
+        <nav className="hidden items-center gap-7 lg:flex">
+          {nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
             >
               {item.label}
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-2">
-          <Button asChild variant="hero" className="hidden rounded-xl sm:inline-flex">
-            <a href="#kontakt">Küsi pakkumist</a>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher className="hidden md:inline-flex" />
+          <Button asChild variant="hero" className="hidden rounded-full px-5 sm:inline-flex">
+            <a href="#kontakt">{t.nav.cta}</a>
           </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Ava menüü">
+              <Button variant="ghost" size="icon" className="lg:hidden" aria-label={t.nav.openMenu}>
                 <Menu />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72">
-              <SheetTitle className="sr-only">Menüü</SheetTitle>
+            <SheetContent side="right" className="w-80 bg-background">
+              <SheetTitle className="sr-only">{t.nav.menu}</SheetTitle>
               <nav className="mt-10 flex flex-col gap-1">
-                {NAV.map((item) => (
+                {nav.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
-                    className="rounded-lg px-3 py-3 text-base font-medium hover:bg-muted"
+                    className="rounded-xl px-3 py-3 text-base font-medium hover:bg-surface"
                   >
                     {item.label}
                   </a>
                 ))}
-                <Button asChild variant="hero" size="xl" className="mt-4">
-                  <a href="#kontakt">Küsi pakkumist</a>
+                <LanguageSwitcher className="mt-4 self-start" />
+                <Button asChild variant="hero" size="xl" className="mt-4 rounded-full">
+                  <a href="#kontakt">{t.nav.cta}</a>
                 </Button>
               </nav>
             </SheetContent>
