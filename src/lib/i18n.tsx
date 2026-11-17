@@ -40,6 +40,7 @@ export type Dict = {
     fields: { name: string; company: string; reply: string; message: string };
     placeholders: { name: string; company: string; reply: string; message: string };
     submit: string;
+    sending: string;
     selected: string;
     clearPlan: string;
     error: string;
@@ -175,10 +176,11 @@ const et: Dict = {
       message: "Räägi lühidalt oma ettevõttest ja soovidest…",
     },
     submit: "Saada päring",
+    sending: "Saadan…",
     selected: "Valitud pakett:",
     clearPlan: "Eemalda valitud pakett",
-    error: "Palun täida nimi, kontakt ja sõnum.",
-    success: "Avan Sinu e-posti rakenduse — vajuta seal \u201ESaada\u201C.",
+    error: "Vabandust, saatmisel tekkis tõrge. Palun kirjuta otse aadressile jaive.giordano@outlook.com.",
+    success: "Aitäh! Sinu päring on edukalt saadetud. Võtan Sinuga ühendust hiljemalt järgmisel tööpäeval.",
     mail: { subject: "Kodulehe päring", name: "Nimi", company: "Ettevõte", contact: "Kontakt", plan: "Pakett" },
   },
   footer: { role: "Veebidisain" },
@@ -319,10 +321,11 @@ const en: Dict = {
       message: "Tell me briefly about your business and what you need…",
     },
     submit: "Send request",
+    sending: "Sending…",
     selected: "Selected package:",
     clearPlan: "Remove selected package",
-    error: "Please fill in your name, contact and message.",
-    success: "Opening your email app — just press \u201CSend\u201D there.",
+    error: "Sorry, something went wrong while sending. Please write directly to jaive.giordano@outlook.com.",
+    success: "Thank you! Your enquiry has been sent successfully. I'll get back to you by the next business day at the latest.",
     mail: { subject: "Website enquiry", name: "Name", company: "Company", contact: "Contact", plan: "Package" },
   },
   footer: { role: "Web design" },
@@ -463,10 +466,11 @@ const ru: Dict = {
       message: "Коротко расскажите о компании и ваших пожеланиях…",
     },
     submit: "Отправить запрос",
+    sending: "Отправляю…",
     selected: "Выбранный пакет:",
     clearPlan: "Убрать выбранный пакет",
-    error: "Пожалуйста, укажите имя, контакт и сообщение.",
-    success: "Открываю ваш почтовый клиент — нажмите там «Отправить».",
+    error: "К сожалению, при отправке произошла ошибка. Пожалуйста, напишите напрямую на jaive.giordano@outlook.com.",
+    success: "Спасибо! Ваш запрос успешно отправлен. Я свяжусь с вами не позднее следующего рабочего дня.",
     mail: { subject: "Запрос на сайт", name: "Имя", company: "Компания", contact: "Контакт", plan: "Пакет" },
   },
   footer: { role: "Веб-дизайн" },
@@ -607,10 +611,11 @@ const it: Dict = {
       message: "Raccontami in breve la tua attività e cosa ti serve…",
     },
     submit: "Invia richiesta",
+    sending: "Invio in corso…",
     selected: "Pacchetto scelto:",
     clearPlan: "Rimuovi il pacchetto scelto",
-    error: "Compila nome, contatto e messaggio.",
-    success: "Apro la tua app di posta: premi \u201CInvia\u201D per completare.",
+    error: "Spiacenti, si è verificato un errore durante l'invio. Scrivi direttamente a jaive.giordano@outlook.com.",
+    success: "Grazie! La tua richiesta è stata inviata con successo. Ti ricontatterò al più tardi il prossimo giorno lavorativo.",
     mail: { subject: "Richiesta sito web", name: "Nome", company: "Azienda", contact: "Contatto", plan: "Pacchetto" },
   },
   footer: { role: "Web design" },

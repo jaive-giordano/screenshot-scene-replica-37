@@ -1,13 +1,16 @@
 import { useState, type FormEvent } from "react";
-import { Mail, Phone, Send, X } from "lucide-react";
-import { toast } from "sonner";
+import { Loader2, Mail, Phone, Send, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LogoMark } from "@/components/site/Logo";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useI18n } from "@/lib/i18n";
-import { buildContactMailto, CONTACT, type PlanId } from "@/lib/site-data";
+import { CONTACT, type PlanId } from "@/lib/site-data";
+
+const WEB3FORMS_ACCESS_KEY = "75ca4eb0-cd86-477e-8366-8f7bc9909481";
+
+type SendStatus = "idle" | "sending" | "success" | "error";
 
 export function Contact({
   selectedPlan,
@@ -19,20 +22,46 @@ export function Contact({
   const { t } = useI18n();
   const c = t.contact;
   const [form, setForm] = useState({ name: "", company: "", reply: "", message: "" });
+  const [status, setStatus] = useState<SendStatus>("idle");
   const planName = selectedPlan ? t.pricing.plans[selectedPlan].name : null;
 
   function update(key: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (status === "sending") return;
     if (!form.name.trim() || !form.reply.trim() || !form.message.trim()) {
-      toast.error(c.error);
+      setStatus("error");
       return;
     }
-    window.location.href = buildContactMailto({ ...form, plan: planName ?? undefined }, c.mail);
-    toast.success(c.success);
+    setStatus("sending");
+    try {
+      const payload = new FormData();
+      payload.set("access_key", WEB3FORMS_ACCESS_KEY);
+      payload.set("subject", "Uus kodulehe päring — " + (form.company.trim() || form.name.trim()));
+      payload.set("from_name", "Jaive Giordano koduleht");
+      payload.set("name", form.name.trim());
+      payload.set("company", form.company.trim());
+      payload.set("contact", form.reply.trim());
+      payload.set("message", form.message.trim());
+      if (planName) payload.set("plan", planName);
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: payload,
+      });
+      const data = (await res.json()) as { success?: boolean };
+      if (res.ok && data.success) {
+        setForm({ name: "", company: "", reply: "", message: "" });
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   const contactRow =
@@ -146,9 +175,33 @@ export function Contact({
               required
             />
           </div>
-          <Button type="submit" variant="hero" size="xl" className="w-full rounded-[2px]">
-            {c.submit} <Send />
+          <Button
+            type="submit"
+            variant="hero"
+            size="xl"
+            className="w-full rounded-[2px]"
+            disabled={status === "sending"}
+          >
+            {status === "sending" ? (
+              <>
+                {c.sending} <Loader2 className="animate-spin" />
+              </>
+            ) : (
+              <>
+                {c.submit} <Send />
+              </>
+            )}
           </Button>
+          {status === "success" && (
+            <p role="status" className="rounded-[2px] border border-champagne/50 bg-ink px-4 py-3 text-sm leading-relaxed text-ink-foreground">
+              {c.success}
+            </p>
+          )}
+          {status === "error" && (
+            <p role="alert" className="rounded-[2px] border border-foreground/25 bg-surface-deep px-4 py-3 text-sm leading-relaxed text-foreground">
+              {c.error}
+            </p>
+          )}
         </form>
       </div>
     </section>
