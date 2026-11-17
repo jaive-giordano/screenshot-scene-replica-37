@@ -11,7 +11,7 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
       <div className="mx-auto max-w-5xl px-5">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{t.pricing.eyebrow}</p>
-          <h2 className="mt-4 text-4xl sm:text-5xl">{t.pricing.title}</h2>
+          <h2 className="mt-5 text-4xl sm:text-6xl">{t.pricing.title}</h2>
           <p className="mt-4 text-lg text-muted-foreground">{t.pricing.sub}</p>
         </div>
 

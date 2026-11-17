@@ -10,7 +10,7 @@ export function HowItWorks() {
       <div className="mx-auto max-w-6xl px-5">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{t.how.eyebrow}</p>
-          <h2 className="mt-4 text-4xl sm:text-5xl">{t.how.title}</h2>
+          <h2 className="mt-5 text-4xl sm:text-6xl">{t.how.title}</h2>
           <p className="mt-4 text-lg text-muted-foreground">{t.how.sub}</p>
         </div>
         <ol className="mt-14 grid gap-7 md:grid-cols-3">

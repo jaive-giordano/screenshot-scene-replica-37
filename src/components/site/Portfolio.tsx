@@ -11,7 +11,6 @@ const IMAGES: Record<PortfolioId, string> = {
   haljastusest: haljastusShot.url,
   reveko: revekoShot.url,
 };
-const BADGE_TONES = ["bg-amber-soft", "bg-success-soft", "bg-primary-soft"];
 
 export function Portfolio() {
   const { t } = useI18n();
@@ -20,7 +19,7 @@ export function Portfolio() {
       <div className="mx-auto max-w-6xl px-5">
         <div className="max-w-2xl">
           <p className="eyebrow">{t.portfolio.eyebrow}</p>
-          <h2 className="mt-4 text-4xl sm:text-5xl">{t.portfolio.title}</h2>
+          <h2 className="mt-5 text-4xl sm:text-6xl">{t.portfolio.title}</h2>
           <p className="mt-4 text-lg text-muted-foreground">{t.portfolio.sub}</p>
         </div>
         <div className="mt-14 grid gap-7 md:grid-cols-2 lg:grid-cols-3">

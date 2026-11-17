@@ -43,7 +43,7 @@ export function Contact({
       <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
         <div>
           <p className="eyebrow">{c.eyebrow}</p>
-          <h2 className="mt-4 text-4xl sm:text-5xl">{c.title}</h2>
+          <h2 className="mt-5 text-4xl sm:text-6xl">{c.title}</h2>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">{c.text}</p>
 
           <div className="mt-10 rounded-[2px] border border-border bg-card p-7">
