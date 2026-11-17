@@ -38,19 +38,19 @@ export function Contact({
     }
     setStatus("sending");
     try {
+      const payload = new FormData();
+      payload.set("access_key", WEB3FORMS_ACCESS_KEY);
+      payload.set("subject", "Uus kodulehe päring — " + (form.company.trim() || form.name.trim()));
+      payload.set("from_name", "Jaive Giordano koduleht");
+      payload.set("name", form.name.trim());
+      payload.set("company", form.company.trim());
+      payload.set("contact", form.reply.trim());
+      payload.set("message", form.message.trim());
+      if (planName) payload.set("plan", planName);
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: "Uus kodulehe päring — " + (form.company.trim() || form.name.trim()),
-          from_name: "Jaive Giordano koduleht",
-          name: form.name.trim(),
-          company: form.company.trim(),
-          contact: form.reply.trim(),
-          message: form.message.trim(),
-          ...(planName ? { plan: planName } : {}),
-        }),
+        headers: { Accept: "application/json" },
+        body: payload,
       });
       const data = (await res.json()) as { success?: boolean };
       if (res.ok && data.success) {
