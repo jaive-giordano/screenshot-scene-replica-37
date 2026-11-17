@@ -22,20 +22,46 @@ export function Contact({
   const { t } = useI18n();
   const c = t.contact;
   const [form, setForm] = useState({ name: "", company: "", reply: "", message: "" });
+  const [status, setStatus] = useState<SendStatus>("idle");
   const planName = selectedPlan ? t.pricing.plans[selectedPlan].name : null;
 
   function update(key: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (status === "sending") return;
     if (!form.name.trim() || !form.reply.trim() || !form.message.trim()) {
-      toast.error(c.error);
+      setStatus("error");
       return;
     }
-    window.location.href = buildContactMailto({ ...form, plan: planName ?? undefined }, c.mail);
-    toast.success(c.success);
+    setStatus("sending");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "Uus kodulehe päring — " + (form.company.trim() || form.name.trim()),
+          from_name: "Jaive Giordano koduleht",
+          name: form.name.trim(),
+          company: form.company.trim(),
+          contact: form.reply.trim(),
+          message: form.message.trim(),
+          ...(planName ? { plan: planName } : {}),
+        }),
+      });
+      const data = (await res.json()) as { success?: boolean };
+      if (res.ok && data.success) {
+        setForm({ name: "", company: "", reply: "", message: "" });
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
   const contactRow =
