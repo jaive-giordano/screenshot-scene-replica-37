@@ -14,8 +14,13 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Static HTML export of the one-page site so it can be hosted on GitHub Pages.
+    pages: [{ path: "/" }],
+    prerender: { enabled: true, autoStaticPathsDiscovery: false },
   },
   vite: {
+    // GitHub Pages serves project sites from /<repo>/; the workflow sets BASE_PATH. Unset elsewhere.
+    base: process.env.BASE_PATH || "/",
     // Pre-bundle UI deps up front so the dev server never re-optimizes mid-session
     // (a mid-session re-optimize leaves the open tab with two React copies -> blank page).
     optimizeDeps: {

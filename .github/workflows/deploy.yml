@@ -25,6 +25,7 @@ jobs:
         uses: oven-sh/setup-bun@v2
 
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
@@ -32,11 +33,23 @@ jobs:
 
       - name: Build
         run: bun run build
+        env:
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+
+      # Images are stored on Lovable's CDN; point them at the live Lovable site,
+      # and add a 404 fallback + disable Jekyll for GitHub Pages.
+      - name: Prepare static site
+        run: |
+          cd dist/client
+          grep -rl '/__l5e/' . | xargs -r sed -i 's#\(["\x27\x60]\)/__l5e/#\1https://screenshot-scene-replica-37.lovable.app/__l5e/#g'
+          cp index.html 404.html
+          touch .nojekyll
+          rm -f _headers
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: dist/client
 
   deploy:
     needs: build
