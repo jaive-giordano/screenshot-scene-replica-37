@@ -23,9 +23,9 @@ export const LATER_CHANGES = { perChangeFrom: 15, hourly: 25 } as const;
 export type PortfolioId = "rukkilill" | "haljastusest" | "reveko";
 
 export const PORTFOLIO: { id: PortfolioId; url: string }[] = [
-  { id: "rukkilill", url: "https://lovable.app" },
-  { id: "haljastusest", url: "https://lovable.app" },
-  { id: "reveko", url: "https://lovable.app" },
+  { id: "rukkilill", url: "https://bright-tide-creative.lovable.app" },
+  { id: "haljastusest", url: "https://parnumaa-kodu-korras.lovable.app" },
+  { id: "reveko", url: "https://reveko-south-estonia-builders.lovable.app" },
 ];
 
 export type ContactRequest = {
