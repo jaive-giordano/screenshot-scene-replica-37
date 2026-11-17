@@ -175,9 +175,33 @@ export function Contact({
               required
             />
           </div>
-          <Button type="submit" variant="hero" size="xl" className="w-full rounded-[2px]">
-            {c.submit} <Send />
+          <Button
+            type="submit"
+            variant="hero"
+            size="xl"
+            className="w-full rounded-[2px]"
+            disabled={status === "sending"}
+          >
+            {status === "sending" ? (
+              <>
+                {c.sending} <Loader2 className="animate-spin" />
+              </>
+            ) : (
+              <>
+                {c.submit} <Send />
+              </>
+            )}
           </Button>
+          {status === "success" && (
+            <p role="status" className="rounded-[2px] border border-champagne/50 bg-ink px-4 py-3 text-sm leading-relaxed text-ink-foreground">
+              {c.success}
+            </p>
+          )}
+          {status === "error" && (
+            <p role="alert" className="rounded-[2px] border border-foreground/25 bg-surface-deep px-4 py-3 text-sm leading-relaxed text-foreground">
+              {c.error}
+            </p>
+          )}
         </form>
       </div>
     </section>
