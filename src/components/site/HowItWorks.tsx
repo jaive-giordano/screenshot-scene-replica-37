@@ -1,38 +1,33 @@
-const STEPS = [
-  {
-    title: "Valmis kavand",
-    text: "Loon Sinu ettevõtte info põhjal esmase kodulehe kavandi, mida saad kohe oma telefonis ja arvutis proovida.",
-  },
-  {
-    title: "Ülevaatus ja täiendused",
-    text: "Vaatame lehe koos üle ning teeme kuni 2 muudatuste ringi tekstides ja piltides.",
-  },
-  {
-    title: "Ametlik arve ja avalikustamine",
-    text: "Maksad ametliku arve alusel alles siis, kui oled tulemusega rahul. Ei mingeid peidetud kulusid.",
-  },
-];
+import { useI18n } from "@/lib/i18n";
+import { cn } from "@/lib/utils";
+
+const TONES = ["bg-primary text-primary-foreground", "bg-success text-primary-foreground", "bg-amber text-foreground"];
 
 export function HowItWorks() {
+  const { t } = useI18n();
   return (
-    <section id="kuidas-tootab" className="py-24">
+    <section id="kuidas-tootab" className="relative bg-surface py-24">
       <div className="mx-auto max-w-6xl px-5">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow">Kuidas töötab</p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Kuidas koostöö käib?</h2>
-          <p className="mt-4 text-lg text-muted-foreground">Kolm lihtsat sammu — ilma riskita.</p>
+          <p className="eyebrow">{t.how.eyebrow}</p>
+          <h2 className="mt-4 text-4xl sm:text-5xl">{t.how.title}</h2>
+          <p className="mt-4 text-lg text-muted-foreground">{t.how.sub}</p>
         </div>
-        <ol className="relative mt-14 grid gap-6 md:grid-cols-3">
-          <div
-            aria-hidden
-            className="absolute left-[16%] right-[16%] top-7 hidden h-px bg-border md:block"
-          />
-          {STEPS.map((step, i) => (
-            <li key={step.title} className="relative rounded-2xl border border-border bg-card p-7 shadow-soft">
-              <span className="grid size-14 place-items-center rounded-2xl bg-primary font-display text-xl font-bold text-primary-foreground shadow-lift">
+        <ol className="mt-14 grid gap-7 md:grid-cols-3">
+          {t.how.steps.map((step, i) => (
+            <li
+              key={i}
+              className="card-tactile relative rounded-3xl border border-border bg-background p-8 shadow-soft"
+            >
+              <span
+                className={cn(
+                  "grid size-14 place-items-center rounded-2xl font-display text-2xl font-semibold shadow-soft",
+                  TONES[i],
+                )}
+              >
                 {i + 1}
               </span>
-              <h3 className="mt-6 text-xl font-semibold">{step.title}</h3>
+              <h3 className="mt-6 text-2xl">{step.title}</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">{step.text}</p>
             </li>
           ))}
