@@ -32,7 +32,7 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-[11px] font-medium uppercase tracking-[0.22em] text-muted-foreground transition-colors hover:text-foreground"
             >
               {item.label}
             </a>
@@ -40,7 +40,7 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-3">
           <LanguageSwitcher className="hidden md:inline-flex" />
-          <Button asChild variant="hero" className="hidden rounded-full px-5 sm:inline-flex">
+          <Button asChild variant="hero" className="hidden rounded-[2px] px-5 sm:inline-flex">
             <a href="#kontakt">{t.nav.cta}</a>
           </Button>
           <Sheet>
@@ -56,13 +56,13 @@ export function SiteHeader() {
                   <a
                     key={item.href}
                     href={item.href}
-                    className="rounded-xl px-3 py-3 text-base font-medium hover:bg-surface"
+                    className="rounded-[2px] px-3 py-3 text-base font-medium hover:bg-surface"
                   >
                     {item.label}
                   </a>
                 ))}
                 <LanguageSwitcher className="mt-4 self-start" />
-                <Button asChild variant="hero" size="xl" className="mt-4 rounded-full">
+                <Button asChild variant="hero" size="xl" className="mt-4 rounded-[2px]">
                   <a href="#kontakt">{t.nav.cta}</a>
                 </Button>
               </nav>

@@ -7,11 +7,11 @@ import { LATER_CHANGES, PLANS, type PlanId } from "@/lib/site-data";
 export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
   const { t } = useI18n();
   return (
-    <section id="hinnakiri" className="py-24">
+    <section id="hinnakiri" className="py-28">
       <div className="mx-auto max-w-5xl px-5">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">{t.pricing.eyebrow}</p>
-          <h2 className="mt-4 text-4xl sm:text-5xl">{t.pricing.title}</h2>
+          <h2 className="mt-5 text-4xl sm:text-6xl">{t.pricing.title}</h2>
           <p className="mt-4 text-lg text-muted-foreground">{t.pricing.sub}</p>
         </div>
 
@@ -22,12 +22,12 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
               <div
                 key={plan.id}
                 className={cn(
-                  "card-tactile relative flex flex-col rounded-3xl border p-8 shadow-soft",
-                  plan.featured ? "border-primary bg-background shadow-lift" : "border-border bg-card",
+                  "card-tactile relative flex flex-col rounded-[2px] border p-8",
+                  plan.featured ? "border-primary bg-background" : "border-border bg-card",
                 )}
               >
                 {plan.featured && (
-                  <span className="absolute -top-3.5 left-8 inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary-foreground">
+                  <span className="absolute -top-3.5 left-8 inline-flex items-center gap-1.5 rounded-[2px] bg-primary px-3.5 py-1 text-[10px] font-medium uppercase tracking-[0.22em] text-primary-foreground">
                     <Sparkles className="size-3.5" />
                     {t.pricing.popular}
                   </span>
@@ -41,7 +41,7 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
                 <ul className="mt-8 flex-1 space-y-3.5">
                   {text.features.map((f) => (
                     <li key={f} className="flex gap-3 text-[0.95rem]">
-                      <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-success-soft text-success">
+                      <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-[2px] bg-success-soft text-success">
                         <Check className="size-3.5" strokeWidth={3} />
                       </span>
                       {f}
@@ -51,7 +51,7 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
                 <Button
                   variant={plan.featured ? "hero" : "heroOutline"}
                   size="xl"
-                  className="mt-9 w-full rounded-full"
+                  className="mt-9 w-full rounded-[2px]"
                   onClick={() => onSelect(plan.id)}
                 >
                   {text.cta}
@@ -61,8 +61,8 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
           })}
         </div>
 
-        <div className="mt-8 flex gap-4 rounded-3xl border border-dashed border-amber/60 bg-amber-soft/50 p-6">
-          <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-amber text-foreground">
+        <div className="mt-8 flex gap-4 rounded-[2px] border border-dashed border-amber/60 bg-amber-soft/50 p-6">
+          <span className="grid size-10 shrink-0 place-items-center rounded-[2px] bg-amber text-foreground">
             <Sparkles className="size-5" />
           </span>
           <p className="leading-relaxed text-muted-foreground">

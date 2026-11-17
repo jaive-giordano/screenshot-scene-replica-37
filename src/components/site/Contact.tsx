@@ -36,17 +36,17 @@ export function Contact({
   }
 
   const contactRow =
-    "grid size-11 place-items-center rounded-xl bg-background text-primary shadow-soft transition-colors group-hover:bg-primary group-hover:text-primary-foreground";
+    "grid size-11 place-items-center rounded-[2px] bg-background text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground";
 
   return (
-    <section id="kontakt" className="bg-surface py-24">
+    <section id="kontakt" className="bg-surface py-28">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
         <div>
           <p className="eyebrow">{c.eyebrow}</p>
-          <h2 className="mt-4 text-4xl sm:text-5xl">{c.title}</h2>
+          <h2 className="mt-5 text-4xl sm:text-6xl">{c.title}</h2>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">{c.text}</p>
 
-          <div className="mt-10 rounded-3xl border border-border bg-card p-7">
+          <div className="mt-10 rounded-[2px] border border-border bg-card p-7">
             <LogoMark className="h-32" />
             <div className="text-sm text-muted-foreground">{c.role}</div>
             <p className="mt-4 border-l-2 border-amber pl-4 leading-relaxed text-foreground/85">{c.intro}</p>
@@ -83,10 +83,10 @@ export function Contact({
 
         <form
           onSubmit={handleSubmit}
-          className="h-fit space-y-5 rounded-3xl border border-border bg-background p-7 shadow-lift sm:p-9"
+          className="h-fit space-y-5 rounded-[2px] border border-border bg-background p-7 sm:p-9"
         >
           {planName && (
-            <div className="flex items-center justify-between gap-3 rounded-2xl bg-primary-soft px-4 py-3 text-sm">
+            <div className="flex items-center justify-between gap-3 rounded-[2px] bg-primary-soft px-4 py-3 text-sm">
               <span>
                 {c.selected} <span className="font-semibold text-accent-foreground">{planName}</span>
               </span>
@@ -108,7 +108,7 @@ export function Contact({
                 value={form.name}
                 placeholder={c.placeholders.name}
                 onChange={(e) => update("name", e.target.value)}
-                className="h-12 rounded-xl bg-surface"
+                className="h-12 rounded-[2px] bg-surface"
                 required
               />
             </div>
@@ -119,7 +119,7 @@ export function Contact({
                 value={form.company}
                 placeholder={c.placeholders.company}
                 onChange={(e) => update("company", e.target.value)}
-                className="h-12 rounded-xl bg-surface"
+                className="h-12 rounded-[2px] bg-surface"
               />
             </div>
           </div>
@@ -130,7 +130,7 @@ export function Contact({
               value={form.reply}
               placeholder={c.placeholders.reply}
               onChange={(e) => update("reply", e.target.value)}
-              className="h-12 rounded-xl bg-surface"
+              className="h-12 rounded-[2px] bg-surface"
               required
             />
           </div>
@@ -142,11 +142,11 @@ export function Contact({
               value={form.message}
               placeholder={c.placeholders.message}
               onChange={(e) => update("message", e.target.value)}
-              className="rounded-xl bg-surface"
+              className="rounded-[2px] bg-surface"
               required
             />
           </div>
-          <Button type="submit" variant="hero" size="xl" className="w-full rounded-full">
+          <Button type="submit" variant="hero" size="xl" className="w-full rounded-[2px]">
             {c.submit} <Send />
           </Button>
         </form>
