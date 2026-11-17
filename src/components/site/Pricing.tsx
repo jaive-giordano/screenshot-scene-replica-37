@@ -50,7 +50,7 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
                       <span
                         className={cn(
                           "mt-0.5 grid size-5 shrink-0 place-items-center rounded-[2px]",
-                          plan.featured ? "bg-ink-foreground/10 text-gold" : "bg-success-soft text-success",
+                          plan.featured ? "bg-champagne/15 text-champagne" : "bg-champagne/10 text-champagne",
                         )}
                       >
                         <Check className="size-3.5" strokeWidth={3} />
