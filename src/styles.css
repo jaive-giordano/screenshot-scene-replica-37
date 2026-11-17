@@ -70,6 +70,7 @@
   --color-ink-muted: var(--ink-muted);
   --color-ink-border: var(--ink-border);
   --color-gold: var(--gold);
+  --color-champagne: var(--champagne);
   --color-primary-hover: var(--primary-hover);
   --color-primary-soft: var(--primary-soft);
   --color-success: var(--success);
@@ -144,6 +145,7 @@
   --ink-muted: oklch(0.72 0 0);
   --ink-border: oklch(0.269 0 0); /* neutral-800 #262626 */
   --gold: oklch(0.745 0.0788 82.5); /* #C5A872 */
+  --champagne: oklch(0.684 0.0847 80.3); /* #B5945B */
 
   --shadow-soft: none;
   --shadow-lift: 0 24px 48px -32px color-mix(in oklab, var(--foreground) 22%, transparent);
@@ -198,12 +200,12 @@
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--muted-foreground);
+  color: var(--champagne);
   &::before {
     content: "";
     width: 2rem;
     height: 1px;
-    background: var(--foreground);
+    background: var(--champagne);
   }
 }
 
@@ -216,12 +218,12 @@
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink-muted);
+  color: var(--champagne);
   &::before {
     content: "";
     width: 2rem;
     height: 1px;
-    background: var(--gold);
+    background: var(--champagne);
   }
 }
 

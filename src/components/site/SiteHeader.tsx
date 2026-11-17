@@ -40,7 +40,7 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-3">
           <LanguageSwitcher className="hidden md:inline-flex" />
-          <Button asChild variant="hero" className="hidden rounded-[2px] px-5 sm:inline-flex">
+          <Button asChild variant="hero" className="hidden rounded-[2px] px-5 hover:ring-1 hover:ring-champagne sm:inline-flex">
             <a href="#kontakt">{t.nav.cta}</a>
           </Button>
           <Sheet>
@@ -62,7 +62,7 @@ export function SiteHeader() {
                   </a>
                 ))}
                 <LanguageSwitcher className="mt-4 self-start" />
-                <Button asChild variant="hero" size="xl" className="mt-4 rounded-[2px]">
+                <Button asChild variant="hero" size="xl" className="mt-4 rounded-[2px] hover:ring-1 hover:ring-champagne">
                   <a href="#kontakt">{t.nav.cta}</a>
                 </Button>
               </nav>
