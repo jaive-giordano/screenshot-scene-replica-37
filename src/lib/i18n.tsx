@@ -40,6 +40,7 @@ export type Dict = {
     fields: { name: string; company: string; reply: string; message: string };
     placeholders: { name: string; company: string; reply: string; message: string };
     submit: string;
+    sending: string;
     selected: string;
     clearPlan: string;
     error: string;
@@ -463,10 +464,11 @@ const ru: Dict = {
       message: "Коротко расскажите о компании и ваших пожеланиях…",
     },
     submit: "Отправить запрос",
+    sending: "Отправляю…",
     selected: "Выбранный пакет:",
     clearPlan: "Убрать выбранный пакет",
-    error: "Пожалуйста, укажите имя, контакт и сообщение.",
-    success: "Открываю ваш почтовый клиент — нажмите там «Отправить».",
+    error: "К сожалению, при отправке произошла ошибка. Пожалуйста, напишите напрямую на jaive.giordano@outlook.com.",
+    success: "Спасибо! Ваш запрос успешно отправлен. Я свяжусь с вами не позднее следующего рабочего дня.",
     mail: { subject: "Запрос на сайт", name: "Имя", company: "Компания", contact: "Контакт", plan: "Пакет" },
   },
   footer: { role: "Веб-дизайн" },
