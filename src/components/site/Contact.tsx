@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Mail, Phone, Send, X } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { LogoMark } from "@/components/site/Logo";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -46,7 +47,7 @@ export function Contact({
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted-foreground">{c.text}</p>
 
           <div className="mt-10 rounded-3xl border border-border bg-card p-7">
-            <div className="font-display text-2xl font-semibold">{CONTACT.name}</div>
+            <LogoMark className="h-32" />
             <div className="text-sm text-muted-foreground">{c.role}</div>
             <p className="mt-4 border-l-2 border-amber pl-4 leading-relaxed text-foreground/85">{c.intro}</p>
             <ul className="mt-6 space-y-4">

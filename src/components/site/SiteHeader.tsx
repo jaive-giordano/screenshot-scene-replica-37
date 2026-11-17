@@ -8,12 +8,8 @@ import { CONTACT } from "@/lib/site-data";
 
 function Brand({ role }: { role: string }) {
   return (
-    <a href="#top" className="flex items-center gap-3">
-      <LogoMark />
-      <span className="leading-tight">
-        <span className="block font-display text-lg font-semibold">{CONTACT.name}</span>
-        <span className="block text-xs font-medium text-muted-foreground">{role}</span>
-      </span>
+    <a href="#top" className="flex items-center gap-3" aria-label={`${CONTACT.name} — ${role}`}>
+      <LogoMark className="h-14" />
     </a>
   );
 }
