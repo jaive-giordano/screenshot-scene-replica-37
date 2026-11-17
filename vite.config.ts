@@ -20,7 +20,7 @@ export default defineConfig({
   },
   vite: {
     // GitHub Pages serves project sites from /<repo>/; the workflow sets BASE_PATH. Unset elsewhere.
-    base: process.env.BASE_PATH || "/",
+    base: process.env["BASE_PATH"] || "/",
     // Pre-bundle UI deps up front so the dev server never re-optimizes mid-session
     // (a mid-session re-optimize leaves the open tab with two React copies -> blank page).
     optimizeDeps: {
