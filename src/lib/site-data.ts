@@ -1,6 +1,6 @@
 export const CONTACT = {
   name: "Jaive Giordano",
-  email: "jaive.giordano@outlook.com",
+  email: "info@jaivegiordano.ee",
   phones: [
     { country: "ee", display: "+372 5647 2817", tel: "+37256472817" },
     { country: "it", display: "+39 392 282 3232", tel: "+393922823232" },

@@ -1,7 +1,7 @@
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const TONES = ["bg-ink-foreground text-champagne", "border border-ink-border text-champagne", "border border-ink-border text-champagne"];
+const TONES = ["border border-ink-border text-champagne", "border border-ink-border text-champagne", "border border-ink-border text-champagne"];
 
 export function HowItWorks() {
   const { t } = useI18n();

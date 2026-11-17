@@ -26,8 +26,8 @@ describe("Hinnakiri", () => {
 });
 
 describe("Kontakt", () => {
-  it("e-post on jaive.giordano@outlook.com", () => {
-    expect(CONTACT.email).toBe("jaive.giordano@outlook.com");
+  it("e-post on info@jaivegiordano.ee", () => {
+    expect(CONTACT.email).toBe("info@jaivegiordano.ee");
   });
 
   it("telefonid on +372 5647 2817 ja +39 392 282 3232", () => {
@@ -36,7 +36,7 @@ describe("Kontakt", () => {
 
   it("päring saadetakse Outlooki aadressile koos sisestatud andmetega", () => {
     const link = buildContactMailto({ name: "Mari", company: "Kohvik OÜ", reply: "mari@example.ee", message: "Soovin kodulehte" });
-    expect(link.startsWith("mailto:jaive.giordano@outlook.com?")).toBe(true);
+    expect(link.startsWith("mailto:info@jaivegiordano.ee?")).toBe(true);
     const body = decodeURIComponent(link.split("body=")[1] ?? "");
     expect(body).toContain("Nimi: Mari");
     expect(body).toContain("Soovin kodulehte");
