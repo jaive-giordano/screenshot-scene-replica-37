@@ -72,6 +72,8 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
           })}
         </div>
 
+        <p className="mt-8 text-center text-sm text-muted-foreground">{t.pricing.vat}</p>
+
         <div className="mt-8 flex gap-4 rounded-[2px] border border-dashed border-amber/60 bg-amber-soft/50 p-6">
           <span className="grid size-10 shrink-0 place-items-center rounded-[2px] bg-amber text-foreground">
             <Sparkles className="size-5" />

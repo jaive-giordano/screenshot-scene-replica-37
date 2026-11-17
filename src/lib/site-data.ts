@@ -15,7 +15,7 @@ export type PricingPlan = { id: PlanId; price: number; featured?: boolean };
 
 export const PLANS: PricingPlan[] = [
   { id: "lahtekood", price: 250 },
-  { id: "votmed-katte", price: 350, featured: true },
+  { id: "votmed-katte", price: 300, featured: true },
 ];
 
 export const LATER_CHANGES = { perChangeFrom: 15, hourly: 25 } as const;

@@ -7,10 +7,17 @@ describe("Hinnakiri", () => {
     expect(PLANS.find((p) => p.id === "lahtekood")?.price).toBe(250);
   });
 
-  it("võtmed-kätte täislahendus maksab 350 € ja on esile tõstetud", () => {
+  it("võtmed-kätte täislahendus maksab 300 € ja on esile tõstetud", () => {
     const plan = PLANS.find((p) => p.id === "votmed-katte");
-    expect(plan?.price).toBe(350);
+    expect(plan?.price).toBe(300);
     expect(plan?.featured).toBe(true);
+  });
+
+  it("kõigis neljas keeles on käibemaksu märge 24%", () => {
+    expect(DICTIONARIES.et.pricing.vat).toBe("Hindadele lisandub käibemaks (24%).");
+    expect(DICTIONARIES.en.pricing.vat).toBe("Prices are subject to VAT (24%).");
+    expect(DICTIONARIES.ru.pricing.vat).toBe("К ценам добавляется НДС (24%).");
+    expect(DICTIONARIES.it.pricing.vat).toBe("Ai prezzi si aggiunge l'IVA (24%).");
   });
 
   it("mõlemas paketis on hinna sees kuni 2 muudatuste ringi", () => {

@@ -24,6 +24,7 @@ export type Dict = {
     sub: string;
     oneTime: string;
     popular: string;
+    vat: string;
     plans: Record<PlanId, PlanText>;
     laterTitle: string;
     later: (perChange: number, hourly: number) => string;
@@ -123,6 +124,7 @@ const et: Dict = {
     sub: "Ühekordne tasu, ametlik arve. Maksad alles siis, kui oled rahul.",
     oneTime: "ühekordne",
     popular: "Populaarseim",
+    vat: "Hindadele lisandub käibemaks (24%).",
     plans: {
       lahtekood: {
         name: "Koduleht + Lähtekood",
@@ -268,6 +270,7 @@ const en: Dict = {
     sub: "One-off fee, official invoice. You only pay once you're happy.",
     oneTime: "one-off",
     popular: "Most popular",
+    vat: "Prices are subject to VAT (24%).",
     plans: {
       lahtekood: {
         name: "Website + Source Code",
@@ -413,6 +416,7 @@ const ru: Dict = {
     sub: "Единоразовая оплата, официальный счёт. Платите, только когда довольны.",
     oneTime: "единоразово",
     popular: "Популярный",
+    vat: "К ценам добавляется НДС (24%).",
     plans: {
       lahtekood: {
         name: "Сайт + исходный код",
@@ -558,6 +562,7 @@ const it: Dict = {
     sub: "Pagamento unico con fattura ufficiale. Paghi solo quando sei soddisfatto.",
     oneTime: "una tantum",
     popular: "Il più scelto",
+    vat: "Ai prezzi si aggiunge l'IVA (24%).",
     plans: {
       lahtekood: {
         name: "Sito web + Codice sorgente",
