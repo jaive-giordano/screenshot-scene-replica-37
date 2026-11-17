@@ -2,23 +2,36 @@ import { ArrowRight, Check, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
-import cafe from "@/assets/portfolio-cafe.jpg";
-import haljastus from "@/assets/portfolio-haljastus.jpg";
-import reveko from "@/assets/portfolio-reveko.jpg";
+import { PORTFOLIO, type PortfolioId } from "@/lib/site-data";
+import rukkilillShot from "@/assets/portfolio-rukkilill.jpg.asset.json";
+import haljastusShot from "@/assets/portfolio-haljastusest.jpg.asset.json";
+import revekoShot from "@/assets/portfolio-reveko-invest.jpg.asset.json";
+
+const SHOTS: Record<PortfolioId, string> = {
+  rukkilill: rukkilillShot.url,
+  haljastusest: haljastusShot.url,
+  reveko: revekoShot.url,
+};
+
+/** Real project URL per demo, so the hero previews and the portfolio cards always open the same address. */
+const PROJECT_URLS = Object.fromEntries(PORTFOLIO.map((p) => [p.id, p.url])) as Record<PortfolioId, string>;
 
 function MiniPreview({
-  src,
-  url,
+  id,
+  label,
   className,
 }: {
-  src: string;
-  url: string;
+  id: PortfolioId;
+  label: string;
   className?: string;
 }) {
   return (
-    <div
+    <a
+      href={PROJECT_URLS[id]}
+      target="_blank"
+      rel="noopener noreferrer"
       className={cn(
-        "absolute overflow-hidden rounded-2xl border border-border bg-card shadow-lift transition-all duration-500 ease-out hover:z-30 hover:-translate-y-3 hover:rotate-0 hover:scale-[1.04] hover:shadow-glow",
+        "absolute block overflow-hidden rounded-2xl border border-border bg-card shadow-lift transition-all duration-500 ease-out hover:z-30 hover:-translate-y-3 hover:rotate-0 hover:scale-[1.04] hover:shadow-glow",
         className,
       )}
     >
@@ -27,11 +40,17 @@ function MiniPreview({
         <span className="size-2 rounded-full bg-amber" />
         <span className="size-2 rounded-full bg-success" />
         <span className="ml-2 truncate rounded-md bg-background px-2 py-0.5 text-[10px] text-muted-foreground">
-          {url}
+          {label}
         </span>
       </div>
-      <img src={src} alt="" width={1280} height={896} className="block aspect-[16/11] w-full object-cover object-top" />
-    </div>
+      <img
+        src={SHOTS[id]}
+        alt=""
+        width={1920}
+        height={911}
+        className="block aspect-[1920/911] w-full object-cover object-top"
+      />
+    </a>
   );
 }
 
@@ -40,18 +59,18 @@ function Collage({ chipTitle, chipSub }: { chipTitle: string; chipSub: string })
     <div className="relative mx-auto aspect-[5/4] w-full max-w-[560px]">
       <div className="absolute inset-[8%] -z-10 rounded-full bg-peach/60 blur-3xl" />
       <MiniPreview
-        src={haljastus}
-        url="haljastusest.ee"
+        id="haljastusest"
+        label="haljastusest.ee"
         className="left-0 top-[6%] z-10 w-[62%] -rotate-6"
       />
       <MiniPreview
-        src={reveko}
-        url="reveko.ee"
+        id="reveko"
+        label="reveko.ee"
         className="right-0 top-0 z-0 w-[56%] rotate-[5deg]"
       />
       <MiniPreview
-        src={cafe}
-        url="rukkilill.ee"
+        id="rukkilill"
+        label="rukkilill.ee"
         className="bottom-0 left-[18%] z-20 w-[66%] rotate-[-1.5deg]"
       />
       <div className="animate-float absolute -left-3 bottom-[14%] z-40 flex items-center gap-3 rounded-2xl border border-border bg-background px-4 py-3 shadow-soft">
