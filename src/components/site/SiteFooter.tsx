@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-background">
       <div className="mx-auto flex max-w-6xl flex-col gap-5 px-5 py-10 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
-          <LogoMark className="size-8" />
+          <LogoMark className="h-16" />
           <p>
             © 2026 {CONTACT.name} · {t.footer.role}
           </p>
