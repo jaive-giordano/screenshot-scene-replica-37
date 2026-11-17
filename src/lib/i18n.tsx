@@ -28,6 +28,8 @@ export type Dict = {
     plans: Record<PlanId, PlanText>;
     laterTitle: string;
     later: (perChange: number, hourly: number) => string;
+    extraTitle: string;
+    extra: (perPage: number) => string;
   };
   contact: {
     eyebrow: string;
@@ -130,6 +132,8 @@ const et: Dict = {
         name: "Koduleht + Lähtekood",
         description: "Sobib ettevõttele, kes soovib lehe ise oma serverisse üles panna.",
         features: [
+          "Kuni 5 sektsiooniga üheleheline koduleht (või kuni 3 alamlehte)",
+          "Üks keel (lisakeeled kokkuleppel)",
           "Personaalse disainiga koduleht",
           "Mobiilisõbralik vaade",
           "Hinna sees kuni 2 muudatuste ringi enne üleandmist",
@@ -155,6 +159,9 @@ const et: Dict = {
     laterTitle: "Hilisemad muudatused ja haldus:",
     later: (a, b) =>
       `Kui soovid hiljem valmis lehel tekste, hindu või pilte uuendada, on muudatuste tasu alates ${a} € / kord (või ${b} €/h) vastavalt mahule.`,
+    extraTitle: "Lisamaht ja erilahendused:",
+    extra: (a) =>
+      `Kui vajad suuremat lehte, lisalehti (alates ${a} € / leht) või mitmekeelsust, lepime täpse hinna kokku enne töö algust.`,
   },
   contact: {
     eyebrow: "Võta ühendust",
@@ -190,6 +197,7 @@ const et: Dict = {
     eyebrow: "KKK",
     title: "Korduma kippuvad küsimused",
     items: [
+      { q: "Kui suur koduleht hinna sisse kuulub?", a: "Standardpakett katab esindusliku väikeettevõtte kodulehe mahuga kuni 5 sisusektsiooni (nt avaleht, teenused, tehtud tööd, meeskond ja kontakt) või kuni 3 eraldi alamlehte ühes keeles. Kui Sinu ettevõte vajab mahukamat lehte või mitut keelt, teeme Sulle eraldi personaalse pakkumise." },
       { q: "Mis saab siis, kui esmane kavand mulle ei meeldi?", a: "Sellisel juhul ei ole Sul mingeid kohustusi ega arveid. Maksad ainult siis, kui kavand meeldib ja otsustad sellega edasi minna." },
       { q: "Mida mul on vaja kavandi tellimiseks saata?", a: "Piisab Sinu ettevõtte nimest, lühikesest teenuste kirjeldusest ja olemasolevatest piltidest või sotsiaalmeedia lingist. Ülejäänud struktuuri ja tekstid panen ise paika." },
       { q: "Kui kiiresti koduleht täielikult valmis saab?", a: "Esmase kavandi saad juba järgmisel tööpäeval. Pärast muudatuste kinnitamist on koduleht avalik 1–2 tööpäeva jooksul." },
@@ -276,6 +284,8 @@ const en: Dict = {
         name: "Website + Source Code",
         description: "For businesses that want to host the site on their own server.",
         features: [
+          "One-page website with up to 5 sections (or up to 3 subpages)",
+          "One language (additional languages by agreement)",
           "Custom-designed website",
           "Mobile-friendly layout",
           "Up to 2 rounds of changes included before handover",
@@ -301,6 +311,9 @@ const en: Dict = {
     laterTitle: "Later changes and maintenance:",
     later: (a, b) =>
       `If you later want to update texts, prices or images on your site, changes start from ${a} € per update (or ${b} €/h) depending on the scope.`,
+    extraTitle: "Extra scope and custom solutions:",
+    extra: (a) =>
+      `If you need a larger site, extra pages (from ${a} € per page) or multiple languages, we agree the exact price before the work starts.`,
   },
   contact: {
     eyebrow: "Get in touch",
@@ -336,6 +349,7 @@ const en: Dict = {
     eyebrow: "FAQ",
     title: "Frequently asked questions",
     items: [
+      { q: "How big a website is included in the price?", a: "The standard package covers a representative small-business website with up to 5 content sections (e.g. home, services, our work, team and contact) or up to 3 separate subpages in one language. If your business needs a larger site or several languages, I'll prepare a separate personalised quote." },
       { q: "What if I don't like the first draft?", a: "Then you have no obligations and no invoices. You only pay if you like the draft and decide to go ahead." },
       { q: "What do I need to send to order a draft?", a: "Your business name, a short description of your services and any existing photos or a social media link are enough. I'll take care of the structure and texts." },
       { q: "How quickly will the website be fully ready?", a: "You'll get the first draft by the next business day. Once the changes are approved, the site goes live within 1–2 business days." },
@@ -422,6 +436,8 @@ const ru: Dict = {
         name: "Сайт + исходный код",
         description: "Подходит компаниям, которые хотят разместить сайт на своём сервере.",
         features: [
+          "Одностраничный сайт с до 5 секциями (или до 3 отдельных страниц)",
+          "Один язык (дополнительные языки по договорённости)",
           "Сайт с индивидуальным дизайном",
           "Удобная мобильная версия",
           "До 2 раундов правок перед передачей включены в цену",
@@ -447,6 +463,9 @@ const ru: Dict = {
     laterTitle: "Последующие изменения и поддержка:",
     later: (a, b) =>
       `Если позже вы захотите обновить тексты, цены или изображения на сайте, стоимость изменений — от ${a} € за раз (или ${b} €/ч) в зависимости от объёма.`,
+    extraTitle: "Дополнительный объём и отдельные решения:",
+    extra: (a) =>
+      `Если нужен более объёмный сайт, дополнительные страницы (от ${a} € за страницу) или несколько языков, точную стоимость согласуем до начала работы.`,
   },
   contact: {
     eyebrow: "Связаться",
@@ -482,6 +501,7 @@ const ru: Dict = {
     eyebrow: "FAQ",
     title: "Часто задаваемые вопросы",
     items: [
+      { q: "Какой объём сайта входит в стоимость?", a: "Стандартный пакет включает сайт представительского типа для малого бизнеса объёмом до 5 секций (например, главная, услуги, выполненные работы, команда и контакты) или до 3 отдельных страниц на одном языке. Если вашей компании нужен более объёмный сайт или несколько языков, я подготовлю отдельное персональное предложение." },
       { q: "Что, если первый макет мне не понравится?", a: "В таком случае у вас нет никаких обязательств и счетов. Вы платите, только если макет понравился и вы решили продолжить." },
       { q: "Что нужно прислать, чтобы заказать макет?", a: "Достаточно названия компании, краткого описания услуг и имеющихся фото или ссылки на соцсети. Структуру и тексты я подготовлю сам." },
       { q: "Как быстро сайт будет полностью готов?", a: "Первый макет вы получите уже на следующий рабочий день. После утверждения правок сайт будет опубликован в течение 1–2 рабочих дней." },
@@ -568,6 +588,8 @@ const it: Dict = {
         name: "Sito web + Codice sorgente",
         description: "Ideale per chi vuole pubblicare il sito sul proprio server.",
         features: [
+          "Sito a pagina singola con fino a 5 sezioni (o fino a 3 sottopagine)",
+          "Una lingua (lingue aggiuntive da concordare)",
           "Sito con design personalizzato",
           "Versione ottimizzata per smartphone",
           "Fino a 2 giri di modifiche inclusi prima della consegna",
@@ -593,6 +615,9 @@ const it: Dict = {
     laterTitle: "Modifiche successive e manutenzione:",
     later: (a, b) =>
       `Se in seguito vuoi aggiornare testi, prezzi o immagini del sito, le modifiche partono da ${a} € a intervento (oppure ${b} €/h) in base all'entità del lavoro.`,
+    extraTitle: "Volumi aggiuntivi e soluzioni su misura:",
+    extra: (a) =>
+      `Se ti serve un sito più grande, pagine extra (da ${a} € a pagina) o più lingue, concordiamo il prezzo esatto prima di iniziare il lavoro.`,
   },
   contact: {
     eyebrow: "Contattami",
@@ -628,6 +653,7 @@ const it: Dict = {
     eyebrow: "FAQ",
     title: "Domande frequenti",
     items: [
+      { q: "Quanto è grande il sito incluso nel prezzo?", a: "Il pacchetto standard copre un sito rappresentativo per piccole imprese con fino a 5 sezioni di contenuti (es. home, servizi, lavori realizzati, team e contatti) o fino a 3 sottopagine separate in una lingua. Se la tua attività richiede un sito più ampio o più lingue, preparo un preventivo personalizzato a parte." },
       { q: "E se la prima bozza non mi piace?", a: "In quel caso non hai alcun obbligo né fatture. Paghi solo se la bozza ti piace e decidi di proseguire." },
       { q: "Cosa devo inviare per ordinare una bozza?", a: "Bastano il nome della tua attività, una breve descrizione dei servizi e le foto che hai già o un link ai social. Al resto, struttura e testi, penso io." },
       { q: "In quanto tempo il sito sarà completamente pronto?", a: "Ricevi la prima bozza già il giorno lavorativo successivo. Dopo l'approvazione delle modifiche, il sito è online entro 1–2 giorni lavorativi." },

@@ -20,6 +20,8 @@ export const PLANS: PricingPlan[] = [
 
 export const LATER_CHANGES = { perChangeFrom: 15, hourly: 25 } as const;
 
+export const EXTRA_SCOPE = { perPageFrom: 40 } as const;
+
 export type PortfolioId = "rukkilill" | "haljastusest" | "reveko";
 
 export const PORTFOLIO: { id: PortfolioId; url: string }[] = [

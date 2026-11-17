@@ -1,8 +1,8 @@
-import { Check, Sparkles } from "lucide-react";
+import { Check, Layers, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/lib/i18n";
-import { LATER_CHANGES, PLANS, type PlanId } from "@/lib/site-data";
+import { EXTRA_SCOPE, LATER_CHANGES, PLANS, type PlanId } from "@/lib/site-data";
 
 export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
   const { t } = useI18n();
@@ -81,6 +81,16 @@ export function Pricing({ onSelect }: { onSelect: (planId: PlanId) => void }) {
           <p className="leading-relaxed text-muted-foreground">
             <span className="font-semibold text-foreground">{t.pricing.laterTitle} </span>
             {t.pricing.later(LATER_CHANGES.perChangeFrom, LATER_CHANGES.hourly)}
+          </p>
+        </div>
+
+        <div className="mt-4 flex gap-4 rounded-[2px] border border-dashed border-amber/60 bg-amber-soft/50 p-6">
+          <span className="grid size-10 shrink-0 place-items-center rounded-[2px] bg-amber text-foreground">
+            <Layers className="size-5" />
+          </span>
+          <p className="leading-relaxed text-muted-foreground">
+            <span className="font-semibold text-foreground">{t.pricing.extraTitle} </span>
+            {t.pricing.extra(EXTRA_SCOPE.perPageFrom)}
           </p>
         </div>
       </div>

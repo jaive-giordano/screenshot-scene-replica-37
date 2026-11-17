@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { DICTIONARIES, LANGS, DEFAULT_LANG } from "@/lib/i18n";
-import { buildContactMailto, CONTACT, LATER_CHANGES, PLANS, PORTFOLIO, REVISION_ROUNDS } from "@/lib/site-data";
+import { buildContactMailto, CONTACT, EXTRA_SCOPE, LATER_CHANGES, PLANS, PORTFOLIO, REVISION_ROUNDS } from "@/lib/site-data";
 
 describe("Hinnakiri", () => {
   it("lähtekoodiga pakett maksab 250 €", () => {
@@ -29,6 +29,31 @@ describe("Hinnakiri", () => {
 
   it("hilisemad muudatused alates 15 € / kord või 25 €/h", () => {
     expect(LATER_CHANGES).toEqual({ perChangeFrom: 15, hourly: 25 });
+  });
+
+  it("lisaleht alates 40 € / leht", () => {
+    expect(EXTRA_SCOPE).toEqual({ perPageFrom: 40 });
+    expect(DICTIONARIES.et.pricing.extra(EXTRA_SCOPE.perPageFrom)).toContain("alates 40 € / leht");
+  });
+
+  it("lähtekoodi pakett selgitab mahdu: kuni 5 sektsiooni või 3 alamlehte ja üks keel", () => {
+    const feats = DICTIONARIES.et.pricing.plans.lahtekood.features;
+    expect(feats[0]).toBe("Kuni 5 sektsiooniga üheleheline koduleht (või kuni 3 alamlehte)");
+    expect(feats).toContain("Üks keel (lisakeeled kokkuleppel)");
+  });
+
+  it("täislahendus viitab endiselt 250 € paketile", () => {
+    expect(DICTIONARIES.et.pricing.plans["votmed-katte"].features[0]).toBe("Kõik, mis 250 € paketis");
+  });
+
+  it("KKK esimene küsimus on kodulehe mahu kohta", () => {
+    const first = DICTIONARIES.et.faq.items[0];
+    expect(first?.q).toBe("Kui suur koduleht hinna sisse kuulub?");
+    expect(first?.a).toContain("kuni 5 sisusektsiooni");
+    expect(first?.a).toContain("kuni 3 eraldi alamlehte ühes keeles");
+    expect(DICTIONARIES.en.faq.items[0]?.q).toBe("How big a website is included in the price?");
+    expect(DICTIONARIES.ru.faq.items[0]?.q).toBe("Какой объём сайта входит в стоимость?");
+    expect(DICTIONARIES.it.faq.items[0]?.q).toBe("Quanto è grande il sito incluso nel prezzo?");
   });
 });
 
