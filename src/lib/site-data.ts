@@ -1,58 +1,32 @@
 export const CONTACT = {
   name: "Jaive Giordano",
-  email: "jaive.giordano@gmail.com",
+  email: "jaive.giordano@outlook.com",
   phones: [
-    { label: "Eesti", display: "+372 5647 2817", tel: "+37256472817" },
-    { label: "Itaalia", display: "+39 392 282 3232", tel: "+393922823232" },
+    { country: "ee", display: "+372 5647 2817", tel: "+37256472817" },
+    { country: "it", display: "+39 392 282 3232", tel: "+393922823232" },
   ],
 } as const;
 
 export const REVISION_ROUNDS = 2;
 
-export type PricingPlan = {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  features: string[];
-  cta: string;
-  featured?: boolean;
-};
+export type PlanId = "lahtekood" | "votmed-katte";
+
+export type PricingPlan = { id: PlanId; price: number; featured?: boolean };
 
 export const PLANS: PricingPlan[] = [
-  {
-    id: "lahtekood",
-    name: "Koduleht + Lähtekood",
-    price: 250,
-    description: "Sobib ettevõttele, kes soovib lehe ise oma serverisse üles panna.",
-    features: [
-      "Personaalse disainiga koduleht",
-      "Mobiilisõbralik vaade",
-      `Hinna sees kuni ${REVISION_ROUNDS} muudatuste ringi enne üleandmist`,
-      "Kontaktivorm ja kaardirakendus",
-      "Täielik lähtekood (GitHub / ZIP)",
-      "Ametlik arve ettevõttele",
-    ],
-    cta: "Vali see pakett",
-  },
-  {
-    id: "votmed-katte",
-    name: "Täislahendus \u201EVõtmed kätte\u201C",
-    price: 350,
-    description: "Muretu täisteenus — mina hoolitsen kõige tehnilise eest.",
-    features: [
-      "Kõik, mis 250 € paketis",
-      `Hinna sees kuni ${REVISION_ROUNDS} muudatuste ringi enne avalikustamist`,
-      "Kodulehe ülespanek kiiretesse serveritesse",
-      "Ühendamine Sinu .ee domeeniga",
-      "Turvasertifikaat (HTTPS) hinna sees",
-    ],
-    cta: "Vali täislahendus",
-    featured: true,
-  },
+  { id: "lahtekood", price: 250 },
+  { id: "votmed-katte", price: 350, featured: true },
 ];
 
 export const LATER_CHANGES = { perChangeFrom: 15, hourly: 25 } as const;
+
+export type PortfolioId = "rukkilill" | "haljastusest" | "reveko";
+
+export const PORTFOLIO: { id: PortfolioId; url: string }[] = [
+  { id: "rukkilill", url: "https://lovable.app" },
+  { id: "haljastusest", url: "https://lovable.app" },
+  { id: "reveko", url: "https://lovable.app" },
+];
 
 export type ContactRequest = {
   name: string;
@@ -62,14 +36,30 @@ export type ContactRequest = {
   plan?: string | undefined;
 };
 
+export type MailLabels = {
+  subject: string;
+  name: string;
+  company: string;
+  contact: string;
+  plan: string;
+};
+
+const DEFAULT_MAIL_LABELS: MailLabels = {
+  subject: "Kodulehe päring",
+  name: "Nimi",
+  company: "Ettevõte",
+  contact: "Kontakt",
+  plan: "Pakett",
+};
+
 /** Builds a mailto: link that opens the visitor's e-mail app with the request filled in. */
-export function buildContactMailto(req: ContactRequest): string {
-  const subject = `Kodulehe päring${req.company ? ` – ${req.company}` : ""}`;
+export function buildContactMailto(req: ContactRequest, labels: MailLabels = DEFAULT_MAIL_LABELS): string {
+  const subject = `${labels.subject}${req.company ? ` – ${req.company}` : ""}`;
   const lines = [
-    `Nimi: ${req.name}`,
-    `Ettevõte: ${req.company || "-"}`,
-    `Kontakt: ${req.reply}`,
-    ...(req.plan ? [`Pakett: ${req.plan}`] : []),
+    `${labels.name}: ${req.name}`,
+    `${labels.company}: ${req.company || "-"}`,
+    `${labels.contact}: ${req.reply}`,
+    ...(req.plan ? [`${labels.plan}: ${req.plan}`] : []),
     "",
     req.message,
   ];
