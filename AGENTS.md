@@ -34,4 +34,4 @@ use the editor.
 - All visible copy lives in per-language dictionaries in `src/lib/i18n.tsx` (one typed `Dict` shape); components read text via `useI18n()` so a missing translation fails typecheck.
 - Vite `optimizeDeps.include` pre-bundles UI deps so a mid-session re-optimize never leaves the preview with two React copies.
 - The landing page is one scrolling page (`src/routes/index.tsx`) composed of section components in `src/components/site/`; nav uses in-page anchors as the brief specifies.
-- The contact form opens the visitor's mail app via a prefilled `mailto:` link (no backend yet).
+- The contact form submits to Web3Forms from the browser (form-encoded POST, no redirect); direct `mailto:` e-mail links stay available in the contact card and footer.
